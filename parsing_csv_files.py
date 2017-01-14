@@ -31,3 +31,16 @@ def parse_file(datafile):
 
 
 parse_file(DATAFILE)
+
+
+# Using csv module deals with csv format
+def parse_csv(datafile):
+    data = []
+    n = 0
+    with open(datafile,'rb') as sb:
+        r = csv.DictReader(sb)
+        for line in r:
+            data.append(line)
+    return data
+
+parse_csv(DATAFILE)
