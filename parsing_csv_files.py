@@ -28,3 +28,6 @@ def parse_file(datafile):
             data.append(entry)
             counter += 1
     return data
+
+
+parse_file(DATAFILE)
