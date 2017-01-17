@@ -31,7 +31,7 @@ def article_overview(kind, period):
     
     for line in data:
         section = line['section']
-        title = line['title']
+        titles = line['title']
         urls = []
         
         for media in line['media']:
