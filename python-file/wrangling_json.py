@@ -18,5 +18,20 @@ import requests
 URL_MAIN = "http://api.nytimes.com/svc/"
 URL_POPULAR = URL_MAIN + "mostpopular/v2/"
 API_KEY = { "popular": "","article": ""}
+
+def get_from_file(kind, period):
+    filename = "popular-{0}-{1}.json".format(kind, period)
+    with open(filename, "r") as f:
+        return json.loads(f.read())
+
+
+def article_overview(kind, period):
+    data = get_from_file(kind, period)
+    titles = []
+    urls =[]
+    
+
+    return (titles, urls)
+
             
             
