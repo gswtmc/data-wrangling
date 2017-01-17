@@ -28,11 +28,10 @@ def get_from_file(kind, period):
 def article_overview(kind, period):
     data = get_from_file(kind, period)
     titles = []
-    urls =[]
     
     for line in data:
         section = line['section']
-        titles = line['title']
+        title = line['title']
         urls = []
         
         for media in line['media']:
