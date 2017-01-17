@@ -14,13 +14,30 @@ def parse_file(datafile):
     workbook = xlrd.open_workbook(datafile)
     sheet = workbook.sheet_by_index(0)
     data = {}
-    # YOUR CODE HERE
-    # Remember that you can use xlrd.xldate_as_tuple(sometime, 0) to convert
-    # Excel date to Python tuple of (year, month, day, hour, minute, second)
+    
+    for n in range(1, sheet.ncols - 1):
+        cv = sheet.col_values(n, start_rowx = 1, end_rowx = None)
+        
+        station = sheet.cell_value(0,n)
+        
+        maxval = max(cv)
+        maxpos = sheet.index(maxval) + 1
+        xlmaxtime = sheet.cell_value(maxpos, 0)
+        maxtime = xlrd.xldate_as_tuple(xlmaxtime, 0)
+        
+        data[station] = {'maxval': maxval, 'maxtime': maxtime}
+    
     return data
 
 def save_file(data, filename):
-    # YOUR CODE HERE
+    with open(filename,'w') as f:
+        w= csv.writer(f, delimiter ='|')
+        w.writerow(['Station', 'Year', 'Month', 'Day', 'Hour', 'Max Load'])
+        
+        for s in data:
+            year, month, day, hour, mins, sec = data[s]['maxtime']
+            w.writerow([s, year, month, day, hour, data[s]['maxval']])
+    
 
     
 def test():
