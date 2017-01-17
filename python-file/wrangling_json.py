@@ -30,6 +30,15 @@ def article_overview(kind, period):
     titles = []
     urls =[]
     
+    for line in data:
+        section = line['section']
+        title = line['title']
+        urls = []
+        
+        for media in line['media']:
+            for metadata in media['media-metadata']:
+                if metadata['format'] == 'Standard Thumbnail':
+                    urls.append(metadata['url'])
 
     return (titles, urls)
 
