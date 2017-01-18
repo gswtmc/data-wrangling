@@ -13,7 +13,13 @@ def extract_airports(page):
     with open(page, "r") as html:
         soup = BeautifulSoup(html,'lxml'
         airports = soup.find(id = 'AirportList')
-        for airport in airports.find_all(['option'])
+        for airport in airports.find_all('option'):
+            if airport['value'][2].isupper() == True:
+               data.append(airport['value']
+                           
+    return data
+                           
+extract_airports(html_page)
     
     
     
