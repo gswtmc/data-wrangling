@@ -24,9 +24,9 @@ def split_file(filename):
     with open(filename, "r") as f:
         for line in f:
             if line.startswith("<?xml"):
-                fout = open("{}-{}".format(filename, n), 'w')
+                out_file = open("{}-{}".format(filename, n), 'w')
                 n += 1
-            fout.write(line)
+            out_file.write(line)
             
             
 
