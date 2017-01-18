@@ -58,12 +58,7 @@ def process_file(input_file, output_good, output_bad):
         for row in data_bad:
             writer.writerow(row)
         
-
-    # This is just an example on how you can use csv.DictWriter
-    # Remember that you have to output 2 files
-
-
-
+        
 def test():
 
     process_file(INPUT_FILE, OUTPUT_GOOD, OUTPUT_BAD)
